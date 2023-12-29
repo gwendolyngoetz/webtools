@@ -26,12 +26,12 @@ func NewRouter() *gin.Engine {
 func createMultiRenderer(templatesDir string) multitemplate.Renderer {
 	renderer := multitemplate.NewRenderer()
 
-	layouts, err := filepath.Glob(templatesDir + "/layouts/*.tmpl")
+	layouts, err := filepath.Glob(templatesDir + "/layouts/*.tmpl.html")
 	if err != nil {
 		panic(err.Error())
 	}
 
-	includes, err := filepath.Glob(templatesDir + "/includes/**/*.tmpl")
+	includes, err := filepath.Glob(templatesDir + "/includes/**/*.tmpl.html")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -46,7 +46,7 @@ func createMultiRenderer(templatesDir string) multitemplate.Renderer {
 		files := append(layoutCopy, include)
 
 		templateFileName := strings.Replace(include, "templates/includes/", "", 1)
-		templateName := strings.Replace(strings.Replace(templateFileName, ".tmpl", "", -1), "/", "_", -1)
+		templateName := strings.Replace(strings.Replace(templateFileName, ".tmpl.html", "", -1), "/", "_", -1)
 		log.Printf("| %-16s | %s", templateName, templateFileName)
 
 		renderer.AddFromFiles(templateName, files...)
