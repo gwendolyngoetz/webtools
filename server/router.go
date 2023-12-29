@@ -74,5 +74,7 @@ func addTextControllerRoutes(router *gin.Engine) {
 	{
 		group.GET("/get1", controller.Get)
 		group.GET("/get2", controller.Get2)
+		group.GET("/html-encode", controller.GetHtmlEncode)
+		group.GET("/html-decode", controller.GetHtmlDecode)
 	}
 }
