@@ -10,6 +10,6 @@ type HomeController struct{}
 
 func (controller HomeController) Index(context *gin.Context) {
 	context.HTML(http.StatusOK, "home/index.tmpl", gin.H{
-		"message": "hi",
+		"otherthing": "hi",
 	})
 }
