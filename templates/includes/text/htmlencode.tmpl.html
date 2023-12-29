@@ -1,9 +1,28 @@
-{{define "title"}}HTML Encode{{end}}
-{{define "content"}}
+{{define "title"}}HTML Encode{{end}} {{define "content"}}
 <h2>HTML Encode</h2>
 
+<style type="text/css">
+    textarea {
+        background-color: #dedede;
+        color: black;
+        height: 12rem;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        background-color: var(--color-accent);
+        height: 2rem;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+</style>
+
 <div>
-  <textarea></textarea>
+    <form hx-post="/text/html-encode1" hx-target="#encodeResults">
+        <textarea id="textarea1"></textarea>
+        <button type="submit">Click</button>
+    </form>
+    <div id="encodeResults"></div>
 </div>
 {{end}}
-

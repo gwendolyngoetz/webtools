@@ -24,6 +24,13 @@ func (controller TextController) GetHtmlEncode(context *gin.Context) {
 	context.HTML(http.StatusOK, "text_htmlencode", gin.H{})
 }
 
+func (controller TextController) PostHtmlEncode(context *gin.Context) {
+	context.GetPostForm("")
+	context.HTML(http.StatusOK, "text_htmlencodepartial", gin.H{
+		"text": "asdf",
+	})
+}
+
 func (controller TextController) GetHtmlDecode(context *gin.Context) {
 	context.HTML(http.StatusOK, "text_htmldecode", gin.H{})
 }
