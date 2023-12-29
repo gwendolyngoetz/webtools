@@ -36,22 +36,23 @@ func createMultiRenderer(templatesDir string) multitemplate.Renderer {
 		panic(err.Error())
 	}
 
-	log.Printf(" -----------------------------")
-	log.Printf("| TEMPLATE NAMES")
-	log.Printf("|-----------------------------")
+	log.Printf(" %s ", strings.Repeat("-", 50))
+	log.Printf("| %-16s | %s", "TEMPLATE NAME", "TEMPLATE FILE")
+	log.Printf("|%s ", strings.Repeat("-", 50))
 
 	for _, include := range includes {
 		layoutCopy := make([]string, len(layouts))
 		copy(layoutCopy, layouts)
 		files := append(layoutCopy, include)
 
-		templateName := strings.Replace(include, "templates/includes/", "", 1)
-		log.Printf("| %s", templateName)
+		templateFileName := strings.Replace(include, "templates/includes/", "", 1)
+		templateName := strings.Replace(strings.Replace(templateFileName, ".tmpl", "", -1), "/", "_", -1)
+		log.Printf("| %-16s | %s", templateName, templateFileName)
 
 		renderer.AddFromFiles(templateName, files...)
 	}
 
-	log.Printf(" ------------------------------")
+	log.Printf(" %s \n\n", strings.Repeat("-", 50))
 
 	return renderer
 }
