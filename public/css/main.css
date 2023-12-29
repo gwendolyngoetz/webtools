@@ -1,4 +1,6 @@
-body {
-  color: #dedede;
-  background-color: black;
+@import 'common.css';
+@import 'icons.css';
+
+.group-content {
+  background-color: var(--color-heading-bg);
 }
