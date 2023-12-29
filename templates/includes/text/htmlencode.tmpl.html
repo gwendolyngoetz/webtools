@@ -19,10 +19,10 @@
 </style>
 
 <div>
-    <form hx-post="/text/html-encode1" hx-target="#encodeResults">
-        <textarea id="textarea1"></textarea>
+    <form hx-post="/text/html-encode" hx-target="#results">
+        <textarea name="textarea1"></textarea>
         <button type="submit">Click</button>
     </form>
-    <div id="encodeResults"></div>
+    <div id="results"></div>
 </div>
 {{end}}

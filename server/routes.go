@@ -25,6 +25,7 @@ func addTextControllerRoutes(router *gin.Engine) {
 		group.GET("/get2", controller.Get2)
 		group.GET("/html-encode", controller.GetHtmlEncode)
 		group.GET("/html-decode", controller.GetHtmlDecode)
-		group.POST("/html-encode1", controller.PostHtmlEncode)
+		group.POST("/html-encode", controller.PostHtmlEncode)
+		group.POST("/html-decode", controller.PostHtmlDecode)
 	}
 }
