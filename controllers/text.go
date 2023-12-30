@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"gwendolyngoetz/webtool/forms"
 	"html"
 	"net/http"
 
@@ -14,9 +15,9 @@ func (controller TextController) GetHtmlEncode(context *gin.Context) {
 }
 
 func (controller TextController) PostHtmlEncode(context *gin.Context) {
-	textarea1, _ := context.GetPostForm("textarea1")
-
-	cleantextarea1 := html.EscapeString(textarea1)
+	var formdata forms.HtmlEncodeForm
+	context.Bind(&formdata)
+	cleantextarea1 := html.EscapeString(formdata.TextArea1)
 
 	context.HTML(http.StatusOK, "text_htmlencodepartial", gin.H{
 		"text": cleantextarea1,
@@ -24,9 +25,9 @@ func (controller TextController) PostHtmlEncode(context *gin.Context) {
 }
 
 func (controller TextController) PostHtmlDecode(context *gin.Context) {
-	textarea1, _ := context.GetPostForm("textarea1")
-
-	cleantextarea1 := html.UnescapeString(textarea1)
+	var formdata forms.HtmlEncodeForm
+	context.Bind(&formdata)
+	cleantextarea1 := html.UnescapeString(formdata.TextArea1)
 
 	context.HTML(http.StatusOK, "text_htmlencodepartial", gin.H{
 		"text": cleantextarea1,
