@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <title>{{template "title" .}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
@@ -9,72 +10,71 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/public/img/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/public/img/favicon-32x32.png" />
     <script type="module" src="/public/js/main.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="page-grid">
-      <header class="page-header" data-hamburger-state="closed">
-        <div class="header-logo">
-          <img src="/public/img/purple-fill-black-outline.png" />
-          <h1>Header</h1>
-          <div class="hamburger-buttons">
-            <button id="hamburger-open-button">
-              <div class="hamburger-open-button-icon"></div>
-            </button>
-            <button id="hamburger-close-button" class="hamburger-close-button-icon"></button>
-          </div>
-        </div>
-        <menu>
-          <li aria-current="page" class="active"><a href="/">Home</a></li>
-          <li><a href="/text/get1">Page-1</a></li>
-          <li><a href="/text/get2">Page-2</a></li>
-        </menu>
-        <menu class="align-right">
-          <li>
-            <input id="color-scheme-toggle" type="checkbox" checked="checked" />
-          </li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Login</a></li>
-        </menu>
-      </header>
+        <header class="page-header" data-hamburger-state="closed">
+            <div class="header-logo">
+                <img src="/public/img/purple-fill-black-outline.png" />
+                <h1>Header</h1>
+                <div class="hamburger-buttons">
+                    <button id="hamburger-open-button">
+                        <div class="hamburger-open-button-icon"></div>
+                    </button>
+                    <button id="hamburger-close-button" class="hamburger-close-button-icon"></button>
+                </div>
+            </div>
+            <menu>
+                <li aria-current="page" class="active"><a href="/">Home</a></li>
+                <li><a href="#">Page-1</a></li>
+                <li><a href="#">Page-2</a></li>
+            </menu>
+            <menu class="align-right">
+                <li>
+                    <input id="color-scheme-toggle" type="checkbox" checked="checked" />
+                </li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Login</a></li>
+            </menu>
+        </header>
 
-      <section class="page-hero">
-        <div class="hero-container">
-          <img src="https://fastly.picsum.photos/id/82/1280/320.jpg?hmac=0H9o4HwX55hr5YG8toBJVigMdy5_H2zFjo5Oy_ExLD0" />
-          <div>tools</div>
-        </div>
-      </section>
+        <section class="page-hero">
+            <div class="hero-container">
+                <img
+                    src="https://fastly.picsum.photos/id/82/1280/320.jpg?hmac=0H9o4HwX55hr5YG8toBJVigMdy5_H2zFjo5Oy_ExLD0" />
+                <div>tools</div>
+            </div>
+        </section>
 
-      <section class="page-breadcrumbs">
-        <menu class="breadcrumbs">
-          <li>
-            <a href="#"><span class="breadcrumb-home-icon" /></a>
-          </li>
-          <li><a href="#">Bread</a></li>
-          <li><a href="#">Crumb</a></li>
-          <li>Page</li>
-        </menu>
-      </section>
+        <section class="page-breadcrumbs">
+            <menu class="breadcrumbs">
+                <li>
+                    <a href="#"><span class="breadcrumb-home-icon" /></a>
+                </li>
+                <li><a href="#">Bread</a></li>
+                <li><a href="#">Crumb</a></li>
+                <li>Page</li>
+            </menu>
+        </section>
 
-      <main class="content-grid">
-        <nav class="left-nav">
-          <menu>
-            <li>
-              <a href="#">Text</a>
-              <menu>
-                <li><a href="/text/html-encode">HTML Encode</a></li>
-                <li><a href="/text/html-decode">HTML Decode</a></li>
-              </menu>
-            </li>
-          </menu>
-        </nav>
-        <article class="page-content">
-          {{template "content" .}}
-        </article>
-      </main>
-      <footer class="page-footer">
-      </footer>
+        <main class="content-grid">
+            <nav class="left-nav">
+                <menu>
+                    <li>
+                        <a href="#">Text</a>
+                        <menu>
+                            <li><a href="/text/html-encode">HTML Encode</a></li>
+                            <li><a href="/text/html-decode">HTML Decode</a></li>
+                        </menu>
+                    </li>
+                </menu>
+            </nav>
+            <article class="page-content">{{template "content" .}}</article>
+        </main>
+        <footer class="page-footer"></footer>
     </div>
     <script type="text/javascript" src="/public/js/lib/htmx-1.9.10/htmx.min.js"></script>
-  </body>
+</body>
+
 </html>
