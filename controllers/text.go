@@ -17,10 +17,18 @@ func (controller TextController) GetHtmlEncode(context *gin.Context) {
 func (controller TextController) PostHtmlEncode(context *gin.Context) {
 	var formdata forms.HtmlEncodeForm
 	context.Bind(&formdata)
-	cleantextarea1 := html.EscapeString(formdata.TextArea1)
+
+	convertedText := ""
+
+	switch aaa := formdata.Action; aaa {
+	case "encode":
+		convertedText = html.EscapeString(formdata.TextArea1)
+	case "decode":
+		convertedText = html.UnescapeString(formdata.TextArea1)
+	}
 
 	context.HTML(http.StatusOK, "text_htmlencodepartial", gin.H{
-		"text": cleantextarea1,
+		"text": convertedText,
 	})
 }
 

@@ -1,26 +1,69 @@
-{{define "title"}}HTML Encode{{end}} {{define "content"}}
-<h2>HTML Encode</h2>
+{{define "title"}}HTML Encode/Decode{{end}} {{define "content"}}
+<h2>HTML Encode/Decode</h2>
 
 <style type="text/css">
     textarea {
         background-color: #dedede;
         color: black;
-        height: 12rem;
-        width: 100%;
-        margin-bottom: 1rem;
-    }
-
-    button {
-        background-color: var(--color-accent);
-        height: 3rem;
+        height: 20rem;
         width: 100%;
         margin-bottom: 1rem;
     }
 
     .button-group {
-        display: grid;
-        column-gap: 1rem;
-        grid-auto-flow: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 1rem;
+
+        label {
+            &:has(input[type='radio']) {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--color-primary);
+                height: 3rem;
+                cursor: pointer;
+                outline: none;
+                width: 8rem;
+            }
+
+            &:has(input[type='radio']:is(:checked)) {
+                background-color: var(--color-accent);
+                /*font-weight: bold;*/
+            }
+
+            &:has(input[type='radio']:hover) {}
+
+            &:first-child {
+                border-radius: 4rem 0 0 4rem;
+            }
+
+            &:has(input[type='radio']:is(:checked))::before {
+                content: '✓';
+                font-size: 1.8rem;
+                padding-right: 0.1rem;
+            }
+
+            /*
+            &:has(input[type='radio']:is(:not(:checked)))::before {
+                content: '✖';
+                content: '×';
+                content: ' ';
+                font-size: 1.5rem;
+                padding-right: 0.2rem;
+            }
+            */
+
+            &:last-child {
+                border-radius: 0 4rem 4rem 0;
+            }
+        }
+
+        input[type='radio'] {
+            appearance: none;
+        }
     }
 
     pre {
@@ -34,10 +77,11 @@
 
 <div>
     <form>
-        <textarea name="textarea1"></textarea>
+        <textarea name="textarea1" hx-trigger="keyup changed delay:400ms" hx-target="#results"
+            hx-post="/text/html-encode"></textarea>
         <div class="button-group">
-            <button hx-post="/text/html-encode" hx-target="#results" type="submit">Encode</button>
-            <button hx-post="/text/html-decode" hx-target="#results" type="submit">Decode</button>
+            <label>Encode<input type="radio" name="action" value="encode" checked="checked" /></label>
+            <label>Decode<input type="radio" name="action" value="decode" /></label>
         </div>
     </form>
     <div id="results"></div>
